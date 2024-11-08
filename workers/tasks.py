@@ -42,6 +42,9 @@ def scan_events():
 
         booking_container = bs.find(id=re.compile("^mec-events-meta-group-booking-[0-9]+$"))
 
+        if not booking_container:
+            continue
+
         if is_available_for_booking(booking_container.find(class_="mec-ticket-unavailable-spots")):
             logger.info(f"Booking available for {name}! {link}")
             async_task(send_notification, name=name, link=link)
