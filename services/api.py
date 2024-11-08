@@ -24,7 +24,3 @@ def is_available_for_booking(booking_container):
     if not any("mec-util-hidden" in s for s in booking_container['class']):
         return False
     return True
-
-
-def is_link(text: str):
-    return re.match(r"https://sportup\.si/dogodki/*", text)
