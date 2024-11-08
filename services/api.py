@@ -20,11 +20,11 @@ def fetch_page(website_url) -> BeautifulSoup:
     return BeautifulSoup(response.content, 'html.parser')
 
 
-def check_places_available(booking_container):
+def is_available_for_booking(booking_container):
     if not any("mec-util-hidden" in s for s in booking_container['class']):
         return False
     return True
 
 
-def check_link(link):
-    return re.match(r"https://sportup\.si/dogodki/*", link)
+def is_link(text: str):
+    return re.match(r"https://sportup\.si/dogodki/*", text)
